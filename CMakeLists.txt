@@ -3,13 +3,19 @@ project(DesignPattern VERSION 1.0)
 set(CMAKE_C_COMPILER "/usr/bin/cc")
 set(CMAKE_CXX_COMPILER "/usr/bin/c++")
 
-option(ADAPTER_DP "Enable adapter lib" ON)
+option(ADAPTER_DP "Enable adapter lib" OFF)
+option(FACTORYMETHOD_DP "Enable factorymethod lib" ON)
 
 if(ADAPTER_DP)
     # Include the Adapter directory
     add_subdirectory(Adapter)
     list(APPEND EXTRA_INCLUDES ${PROJECT_SOURCE_DIR}/Adapter/include)
     list(APPEND EXTRA_LIBS adapter)
+endif()
+if(FACTORYMETHOD_DP)
+    add_subdirectory(FactoryMethod)
+    list(APPEND EXTRA_INCLUDES ${PROJECT_SOURCE_DIR}/FactoryMethod/include)
+    list(APPEND EXTRA_LIBS factorymethod)
 endif()
 
 # Add the main executable
