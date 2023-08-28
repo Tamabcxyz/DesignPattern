@@ -54,6 +54,7 @@ while [ -n "$1" ]; do
     esac
 done
 
+rm -rf "$TARGET_PATH"
 cmake -S . -B "$TARGET_PATH"
 
 cd "$TARGET_PATH"

@@ -1,0 +1,1 @@
+cd ./target/build && ./main
