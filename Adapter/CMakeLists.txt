@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.24.3)
 set(
     adapter_src
     src/Target.cpp
+    src/Adaptee.cpp
+    src/Adapter.cpp
     )
 # add to include it in cpp file src/Target.cpp
 include_directories(include)
