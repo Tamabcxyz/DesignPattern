@@ -7,10 +7,10 @@ set(CMAKE_CXX_COMPILER "/usr/bin/c++")
 # Add the main executable
 add_executable(main main.cpp)
 
-# # Include the Adapter directory
-# add_subdirectory(Adapter)
-
-# target_link_directories(main PRIVATE ${CMAKE_SOURCE_DIR}/Adapter)
-# target_link_libraries(main adder)
+# Include the Adapter directory
+add_subdirectory(Adapter)
+# Point out where lib exist in target/build (In this case target/build/Adapter/libadapter.a)
+target_link_directories(main PRIVATE ${CMAKE_SOURCE_DIR}/Adapter)
+target_link_libraries(main PRIVATE adapter)
 
 
