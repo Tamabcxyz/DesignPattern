@@ -4,7 +4,8 @@ set(CMAKE_C_COMPILER "/usr/bin/cc")
 set(CMAKE_CXX_COMPILER "/usr/bin/c++")
 
 option(ADAPTER_DP "Enable adapter lib" OFF)
-option(FACTORYMETHOD_DP "Enable factorymethod lib" ON)
+option(FACTORYMETHOD_DP "Enable factorymethod lib" OFF)
+option(ABSTRACTFACTORY_DP "Enable abstractfactory lib" ON)
 
 if(ADAPTER_DP)
     # Include the Adapter directory
@@ -16,6 +17,11 @@ if(FACTORYMETHOD_DP)
     add_subdirectory(FactoryMethod)
     list(APPEND EXTRA_INCLUDES ${PROJECT_SOURCE_DIR}/FactoryMethod/include)
     list(APPEND EXTRA_LIBS factorymethod)
+endif()
+if(ABSTRACTFACTORY_DP)
+    add_subdirectory(AbstractFactory)
+    list(APPEND EXTRA_INCLUDES ${PROJECT_SOURCE_DIR}/AbstractFactory/include)
+    list(APPEND EXTRA_LIBS abstractfactory)
 endif()
 
 # Add the main executable

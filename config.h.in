@@ -1,2 +1,3 @@
 #cmakedefine ADAPTER_DP
 #cmakedefine FACTORYMETHOD_DP
+#cmakedefine ABSTRACTFACTORY_DP

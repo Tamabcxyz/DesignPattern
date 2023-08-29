@@ -1,0 +1,4 @@
+#### Abstract factory: is a creational design pattern that lets you produce **families** of related objects **without specifying their concrete classes**.
+
+Scenario code:
+I wanna create button and check in different platforms, like (on Window and Linux), so I need to use the abstract factory design pattern. Firstly, I create two interfaces called IButton and ICheckbox with a pain method. After that, I make two classes Window and Linux inherited from them and implemented the pain method in different ways. Now I will create an interface called IAbstracFactory with two methods; createButton and createCheckbox (virtual). Finally, create LinuxTemplate, WindowTemplate inherited from IAbstracFactory and implement the two methods above (createButton of LinuxTemplate will return LinuxButton, createCheckbox of LinuxTemplate will return LinuxCheckbox. Apply for WindowTemplate).

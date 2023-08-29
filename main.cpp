@@ -4,6 +4,9 @@
 #include "Adapter.h"
 #elifdef FACTORYMETHOD_DP
 #include "App.h"
+#elifdef ABSTRACTFACTORY_DP
+#include "LinuxTemplate.h"
+#include "WindowTemplate.h"
 #endif
 
 using namespace std;
@@ -26,6 +29,19 @@ int main() {
   App app;
   auto object = app.createItem("IPhone14");
   object->print_object();
+#elifdef ABSTRACTFACTORY_DP
+  std::unique_ptr<IAbstractFactory> gf;
+  gf = std::make_unique<LinuxTemplate>();
+  auto button = gf->createButton();
+  auto checkbox = gf->createCheckbox();
+  button->pain();// LinuxButton
+  checkbox->pain();// LinuxCheckBox
+
+  gf = std::make_unique<WindowTemplate>();
+  button = gf->createButton();
+  checkbox = gf->createCheckbox();
+  button->pain();// WindowButton
+  checkbox->pain();// WindowCheckbox
 #else
   std::cout << "Check option CMakeLists.txt" << std::endl;
 #endif
