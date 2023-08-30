@@ -30,3 +30,6 @@ Behavioral Patterns: forcus on communication between objects
 + Strategy
 + Template Method
 + Visitor
+
+Different "Factory method" and "Abstract Factory"
+- At factory of Factory method will implement how to create object, At factory of Abstract Factory this will be an interface/abstract

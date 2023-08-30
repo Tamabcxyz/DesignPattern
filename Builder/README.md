@@ -1,0 +1,4 @@
+##### Builder pattern: is a creational design pattern that lets you **construct complex objects step by step**. The pattern allows you to produce different types and representations of an object using the same construction code.
+
+Scenario code:
+Create Pizza class with three member (dough_, sauce_, topping_). IPizzaBuilder is a interface class have virtual method buildDough, buildSauce, buildTopping. Now create derived class call PepperoniPizza and SausagePizza inherit from IPizzaBuilder it have a member Pizza and implement method from IPizzaBuilder. After that create Shipper class have member is a poiter of IPizzaBuilder and two method get and set for that pointer member.
