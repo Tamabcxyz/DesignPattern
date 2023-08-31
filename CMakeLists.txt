@@ -6,7 +6,8 @@ set(CMAKE_CXX_COMPILER "/usr/bin/c++")
 option(ADAPTER_DP "Enable adapter lib" OFF)
 option(FACTORYMETHOD_DP "Enable factorymethod lib" OFF)
 option(ABSTRACTFACTORY_DP "Enable abstractfactory lib" OFF)
-option(BUILDER_DP "Enable builder lib" ON)
+option(BUILDER_DP "Enable builder lib" OFF)
+option(PROTOTYPE_DP "Enable prototype lib" ON)
 
 if(ADAPTER_DP)
     # Include the Adapter directory
@@ -28,6 +29,11 @@ if(BUILDER_DP)
     add_subdirectory(Builder)
     list(APPEND EXTRA_INCLUDES ${PROJECT_SOURCE_DIR}/Builder/include)
     list(APPEND EXTRA_LIBS builder)
+endif()
+if(PROTOTYPE_DP)
+    add_subdirectory(Prototype)
+    list(APPEND EXTRA_INCLUDES ${PROJECT_SOURCE_DIR}/Prototype/include)
+    list(APPEND EXTRA_LIBS prototype)
 endif()
 
 # Add the main executable

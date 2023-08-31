@@ -2,3 +2,4 @@
 #cmakedefine FACTORYMETHOD_DP
 #cmakedefine ABSTRACTFACTORY_DP
 #cmakedefine BUILDER_DP
+#cmakedefine PROTOTYPE_DP

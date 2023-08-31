@@ -8,9 +8,11 @@
 #include "LinuxTemplate.h"
 #include "WindowTemplate.h"
 #elifdef BUILDER_DP
-#include "Shipper.h"
 #include "PepperoniPizza.h"
 #include "SausagePizza.h"
+#include "Shipper.h"
+#elifdef PROTOTYPE_DP
+#include "ShapeCache.h"
 #endif
 
 using namespace std;
@@ -38,17 +40,17 @@ int main() {
   gf = std::make_unique<LinuxTemplate>();
   auto button = gf->createButton();
   auto checkbox = gf->createCheckbox();
-  button->pain();// LinuxButton
-  checkbox->pain();// LinuxCheckBox
+  button->pain();   // LinuxButton
+  checkbox->pain(); // LinuxCheckBox
 
   gf = std::make_unique<WindowTemplate>();
   button = gf->createButton();
   checkbox = gf->createCheckbox();
-  button->pain();// WindowButton
-  checkbox->pain();// WindowCheckbox
+  button->pain();   // WindowButton
+  checkbox->pain(); // WindowCheckbox
 #elifdef BUILDER_DP
   Shipper shipper;
-    
+
   PepperoniPizza pp;
   pp.buildDough("PepperoniPizza dough");
   pp.buildSauce("PepperoniPizza sauce");
@@ -56,7 +58,7 @@ int main() {
   shipper.setPizza(&pp);
   Pizza tm = shipper.getPizza();
   tm.disPlay();
-  
+
   SausagePizza sp;
   sp.buildDough("SausagePizza dough");
   sp.buildSauce("SausagePizza sauce");
@@ -65,6 +67,18 @@ int main() {
   shipper.setPizza(&sp);
   Pizza ti = shipper.getPizza();
   ti.disPlay();
+#elifdef PROTOTYPE_DP
+  ShapeCache sc;
+  sc.loadCache();
+
+  IShape *c = sc.getShape("circle");
+  IShape *s = sc.getShape("square");
+
+  c->draw();
+  s->draw();
+
+  delete c;
+  delete s;
 #else
   std::cout << "Check option CMakeLists.txt" << std::endl;
 #endif
