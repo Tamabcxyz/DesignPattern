@@ -13,6 +13,9 @@
 #include "Shipper.h"
 #elifdef PROTOTYPE_DP
 #include "ShapeCache.h"
+#elifdef SINGLETON_DP
+#include "StrongSingleton.h"
+#include "WeakSingleton.h"
 #endif
 
 using namespace std;
@@ -20,6 +23,30 @@ using namespace std;
 #ifdef ADAPTER_DP
 void ClientCode(const Target *target) {
   std::cout << target->request() << std::endl;
+}
+#elifdef SINGLETON_DP
+// case one: WeakSingleton
+WeakSingleton *WeakSingleton::instance = nullptr; // have to initial in global
+
+void processOne() {
+  WeakSingleton *instance = WeakSingleton::getSingletonInstance("Bob");
+  std::cout << instance->getName() << std::endl;
+}
+void processTwo() {
+  WeakSingleton *instance = WeakSingleton::getSingletonInstance("Bi");
+  std::cout << instance->getName() << std::endl;
+}
+
+// case two: StrongSingleton
+StrongSingleton *StrongSingleton::instance = nullptr;
+mutex StrongSingleton::mutex_;
+void processThree() {
+  StrongSingleton *instance = StrongSingleton::getSingletonInstance("Bob");
+  std::cout << instance->getName() << std::endl;
+}
+void processFour() {
+  StrongSingleton *instance = StrongSingleton::getSingletonInstance("Bi");
+  std::cout << instance->getName() << std::endl;
 }
 #endif
 
@@ -79,6 +106,21 @@ int main() {
 
   delete c;
   delete s;
+#elifdef SINGLETON_DP
+  // case one: WeakSingleton class
+  // std::thread t1(processOne);
+  // std::thread t2(processTwo);
+  // t1.join();
+  // t2.join();
+  // => this is a weak of singleton in multiple thread. when you run many time
+  // at some time it will be print out "Bob" and "Bi"
+
+  // case two: StrongSingleton class
+  std::thread t1(processThree);
+  std::thread t2(processFour);
+  t1.join();
+  t2.join();
+  // => Only print out "Bob" or "Bi"
 #else
   std::cout << "Check option CMakeLists.txt" << std::endl;
 #endif

@@ -1,0 +1,4 @@
+##### Singleton pattern: is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
+
+Scenario code:
+Defile a class call WeakSingleton have a member static data pointer with type WeakSingleton (instance). Make sure the constructor of that class have put in private and copy constructor, copy assignment is delete. The class have a static method call getSingletonInstance (it will return static data poiter instance). WeakSingleton has limitations when run in multiple threads, so to handle it we use the StrongSingleton class, which is similar to WeakSingleton but has anorther static member call mutex_ for lock "instance" when call getSingletonInstance.
