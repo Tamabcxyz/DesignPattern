@@ -1,17 +1,17 @@
 ### Note step to work with this repo
 #### Step to build and run
-Specify option in CMakeLists.txt file and then
-./compile.sh
+Specify option in CMakeLists.txt file and then <br />
+./compile.sh <br />
 ./run.sh
 
 #### Type of Design pattern
-Creational Patterns: how to create an object
+##### Creational Patterns: how to create an object
 + Factory method
 + Abstract Factory
 + Builder
 + Prototy
 + Singleton
-Structural Patterns: simlify the relationship between class and object to make the system flexible and efficient
+##### Structural Patterns: simlify the relationship between class and object to make the system flexible and efficient
 + Adapter
 + Bridge
 + Composite
@@ -19,7 +19,7 @@ Structural Patterns: simlify the relationship between class and object to make t
 + Facade
 + Flyweight
 + Proxy
-Behavioral Patterns: forcus on communication between objects
+##### Behavioral Patterns: forcus on communication between objects
 + Chain of Responsibility
 + Command
 + Iterator
