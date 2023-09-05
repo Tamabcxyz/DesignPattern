@@ -54,10 +54,17 @@ while [ -n "$1" ]; do
     esac
 done
 
+START_BUILD_TIME=$(date +%s)
+echo "===============BUILD===============\n"
+
 rm -rf "$TARGET_PATH"
 cmake -S . -B "$TARGET_PATH"
 
 cd "$TARGET_PATH"
 make
 
+echo "===============END BUILD===============\n"
+END_BUILD_TIME=$(date +%s)
+DURATION=$(($END_BUILD_TIME - $START_BUILD_TIME))
+echo "==> Build time is: $(($DURATION / 60)) minutes $(($DURATION % 60)) seconds\n"
         
