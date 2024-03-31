@@ -8,7 +8,8 @@ option(FACTORYMETHOD_DP "Enable factorymethod lib" OFF)
 option(ABSTRACTFACTORY_DP "Enable abstractfactory lib" OFF)
 option(BUILDER_DP "Enable builder lib" OFF)
 option(PROTOTYPE_DP "Enable prototype lib" OFF)
-option(SINGLETON_DP "Enable singleton lib" ON)
+option(SINGLETON_DP "Enable singleton lib" OFF)
+option(BASICKNOWDGE "Enable basic knowdge lib" ON)
 
 if(ADAPTER_DP)
     # Include the Adapter directory
@@ -40,6 +41,11 @@ if(SINGLETON_DP)
     add_subdirectory(Singleton)
     list(APPEND EXTRA_INCLUDES ${PROJECT_SOURCE_DIR}/Singleton/include)
     list(APPEND EXTRA_LIBS singleton)
+endif()
+if(BASICKNOWDGE)
+    add_subdirectory(BasicKnowdge)
+    list(APPEND EXTRA_INCLUDES ${PROJECT_SOURCE_DIR}/BasicKnowdge/include)
+    list(APPEND EXTRA_LIBS basicknowdge)
 endif()
 
 # Add the main executable

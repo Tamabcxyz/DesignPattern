@@ -16,6 +16,12 @@
 #elifdef SINGLETON_DP
 #include "StrongSingleton.h"
 #include "WeakSingleton.h"
+#elifdef BASICKNOWDGE
+#include "SingleResponsibilityPrinciple.h"
+#include "OpenClosedPriciple.h"
+#include "LiskovSubstitutionPrinciple.h"
+#include "InterfaceSegregationPrinciple.h"
+#include "DependencyInversionPrinciple.h"
 #endif
 
 using namespace std;
@@ -121,6 +127,68 @@ int main() {
   t1.join();
   t2.join();
   // => Only print out "Bob" or "Bi"
+#elifdef BASICKNOWDGE
+  
+  //Single responsibility principle
+  Journal journal{"Dear Diary"};
+  journal.add("I ate a bug");
+  journal.add("I cried today");
+  PersistenceManager::save(journal, "diary.txt");
+  
+  /*
+  //Open-Closed principle
+  Product apple{"Apple", Color::green, Size::small};
+  Product tree{"Tree", Color::green, Size::large};
+  Product house{"House", Color::blue, Size::large};
+
+  const vector<Product*> all { &apple, &tree, &house };
+
+  BetterFilter bf;
+  ColorSpecification green(Color::green);
+  auto green_things = bf.filter(all, green);
+  for (auto& x : green_things)
+    cout << x->name << " is green\n";
+
+
+  SizeSpecification large(Size::large);
+  AndSpecification<Product> green_and_large(green, large);
+
+  //auto big_green_things = bf.filter(all, green_and_large);
+
+  // use the operator instead (same for || etc.)
+  auto spec = green && large;
+  for (auto& x : bf.filter(all, spec))
+    cout << x->name << " is green and large\n";
+
+  // warning: the following will compile but will NOT work
+  // auto spec2 = SizeSpecification{Size::large} &&
+  //              ColorSpecification{Color::blue};
+  */
+  /*
+  // Liskov Substitution Principle
+  Rectangle r{ 5,5 };
+  process(r);
+
+  Square s{ 5 };
+  process(s);
+  */
+
+  /*
+    //Interface Segregation principle
+
+  */
+  /*
+  //Dependency Inversion Principle
+  Person parent{"John"};
+  Person child1{"Chris"};
+  Person child2{"Matt"};
+
+  Relationships relationships;
+  relationships.add_parent_and_child(parent, child1);
+  relationships.add_parent_and_child(parent, child2);
+
+  Research _(relationships);
+  */
 #else
   std::cout << "Check option CMakeLists.txt" << std::endl;
 #endif

@@ -4,6 +4,10 @@ Specify option in CMakeLists.txt file and then <br />
 ./compile.sh <br />
 ./run.sh
 
+### Design Pattern
+Design patterns are common architectural approaches
+
+
 #### Type of Design pattern
 ##### Creational Patterns: how to create an object
 + Factory method
